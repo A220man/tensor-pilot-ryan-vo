@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "current_feature": "project-skeleton",
+  "features": [
+    {
+      "id": "project-skeleton",
+      "title": "Project skeleton with FastAPI backend and React+TypeScript frontend",
+      "status": "done",
+      "acceptance": [
+        "Backend FastAPI app with /health endpoint",
+        "Frontend Vite+React+TypeScript app with build script",
+        "Dockerfiles for backend and frontend",
+        "docker-compose.yml with Keycloak and persistent volumes",
+        "README with install/run/test steps",
+        "portfolio.json at root",
+        "Backend and frontend tests pass"
+      ],
+      "implementation": [
+        "backend/app/main.py",
+        "backend/app/core/config.py",
+        "backend/app/api/routes/health.py",
+        "backend/app/api/routes/concepts.py",
+        "backend/tests/test_health.py",
+        "frontend/src/main.tsx",
+        "frontend/src/App.tsx",
+        "frontend/src/App.test.tsx",
+        "frontend/package.json",
+        "frontend/vite.config.ts",
+        "frontend/tsconfig.json",
+        "frontend/Dockerfile",
+        "backend/Dockerfile",
+        "docker-compose.yml",
+        "README.md",
+        "portfolio.json",
+        "CHANGELOG.md",
+        "LICENSE",
+        ".env.example",
+        ".gitignore"
+      ],
+      "tests": [
+        "backend/tests/test_health.py",
+        "frontend/src/App.test.tsx"
+      ]
+    },
+    {
+      "id": "taxonomy-data-model",
+      "title": "Taxonomy data model with JSONL storage and prerequisite graph",
+      "status": "planned",
+      "acceptance": [
+        "SQLite models for Concept, Prerequisite, Subject, Domain",
+        "JSONL import/export for taxonomy data",
+        "Prerequisite graph traversal algorithms (topological sort, reachable nodes)",
+        "API endpoints for concepts, prerequisites, subjects, domains"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "custom-domain-support",
+      "title": "Custom domain support for taxonomy visualization (Issue #24)",
+      "status": "planned",
+      "acceptance": [
+        "Configurable subjects, domains, age/difficulty ranges",
+        "Load custom taxonomy datasets following same schema",
+        "Domain-agnostic visualization components"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "learning-progress-tracker",
+      "title": "Browser-based child learning progress tracker (Issue #16)",
+      "status": "planned",
+      "acceptance": [
+        "Per-child concept states: not_started, learning, known, evidence_assessed",
+        "Multiple child profiles with local persistence",
+        "Progress visualization: dim/hide/show-only-known modes",
+        "Search and filters for subject, age, known concepts"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "graph-linkage-validation",
+      "title": "Graph linkage validation and quality reporting (Issue #18)",
+      "status": "planned",
+      "acceptance": [
+        "Detect incoherent prerequisite linkages",
+        "Quality metrics for prerequisite graph",
+        "Validation report API endpoint"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "performance-optimization",
+      "title": "Zoom/drag performance optimization (Issue #19)",
+      "status": "planned",
+      "acceptance": [
+        "Optimized graph rendering for 1500+ nodes",
+        "Viewport culling and level-of-detail",
+        "Smooth interaction at high zoom/drag speeds"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "auth-oidc-keycloak",
+      "title": "OIDC authentication with Keycloak and SAML broker",
+      "status": "planned",
+      "acceptance": [
+        "Authorization code flow with PKCE",
+        "HttpOnly SameSite cookies with CSRF protection",
+        "Role-based authorization (viewer/operator/admin)",
+        "Keycloak realm import with SAML identity broker"
+      ],
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "llm-advisory-explanations",
+      "title": "Optional LLM explanations for learning pathways",
+      "status": "planned",
+      "acceptance": [
+        "OpenAI-compatible, Anthropic, Gemini, Ollama adapters",
+        "Advisory-only explanations grounded in actual records",
+        "Configurable provider/model/endpoint, no hardcoded keys"
+      ],
+      "implementation": [],
+      "tests": []
+    }
+  ]
+}

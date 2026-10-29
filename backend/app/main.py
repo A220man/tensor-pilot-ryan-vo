@@ -3,14 +3,16 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
-from app.api.routes import health, concepts
+from app.core.database import init_db, close_db
+from app.models import Concept, Subject, Domain, Prerequisite  # noqa: F401
+from app.api.routes import health, concepts, prerequisites, subjects, domains, validation
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup: initialize database, etc.
+    await init_db()
     yield
-    # Shutdown: cleanup
+    await close_db()
 
 
 def create_app() -> FastAPI:
@@ -31,6 +33,10 @@ def create_app() -> FastAPI:
 
     app.include_router(health.router, prefix="/api/v1", tags=["health"])
     app.include_router(concepts.router, prefix="/api/v1/concepts", tags=["concepts"])
+    app.include_router(prerequisites.router, prefix="/api/v1/prerequisites", tags=["prerequisites"])
+    app.include_router(subjects.router, prefix="/api/v1/subjects", tags=["subjects"])
+    app.include_router(domains.router, prefix="/api/v1/domains", tags=["domains"])
+    app.include_router(validation.router, prefix="/api/v1/validation", tags=["validation"])
 
     return app
 

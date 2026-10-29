@@ -45,7 +45,7 @@
     {
       "id": "taxonomy-data-model",
       "title": "Taxonomy data model with JSONL storage and prerequisite graph",
-      "status": "planned",
+      "status": "in_progress",
       "acceptance": [
         "SQLite models for Concept, Prerequisite, Subject, Domain",
         "JSONL import/export for taxonomy data",

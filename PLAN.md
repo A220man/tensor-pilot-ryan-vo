@@ -27,7 +27,7 @@ Tests: `backend/tests/test_health.py`, `frontend/src/App.test.tsx`
 
 ### taxonomy-data-model — Taxonomy data model with JSONL storage and prerequisite graph
 
-Status: planned
+Status: in_progress
 
 Acceptance:
 - SQLite models for Concept, Prerequisite, Subject, Domain

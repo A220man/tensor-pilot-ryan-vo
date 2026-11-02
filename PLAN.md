@@ -4,7 +4,7 @@ Each round completes one feature or repair. Future items are planned, not implem
 
 ## Current round
 
-project-skeleton
+taxonomy-data-model
 
 ## Roadmap
 
@@ -27,13 +27,17 @@ Tests: `backend/tests/test_health.py`, `frontend/src/App.test.tsx`
 
 ### taxonomy-data-model — Taxonomy data model with JSONL storage and prerequisite graph
 
-Status: in_progress
+Status: done
 
 Acceptance:
 - SQLite models for Concept, Prerequisite, Subject, Domain
 - JSONL import/export for taxonomy data
 - Prerequisite graph traversal algorithms (topological sort, reachable nodes)
 - API endpoints for concepts, prerequisites, subjects, domains
+
+Implementation: `backend/app/models/concept.py`, `backend/app/models/prerequisite.py`, `backend/app/models/__init__.py`, `backend/app/services/taxonomy.py`, `backend/app/api/routes/concepts.py`, `backend/app/api/routes/prerequisites.py`, `backend/app/api/routes/subjects.py`, `backend/app/api/routes/domains.py`, `backend/app/api/routes/validation.py`, `backend/app/api/routes/__init__.py`
+
+Tests: `backend/tests/test_concepts.py`
 
 ### custom-domain-support — Custom domain support for taxonomy visualization (Issue #24)
 

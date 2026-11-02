@@ -115,7 +115,7 @@ async def delete_prerequisite(
 async def get_concept_prerequisites(
     concept_id: str,
     recursive: bool = Query(False),
-    service=Depends(get_taxonomy_service),
+    service: TaxonomyService = Depends(get_taxonomy_service),
 ):
     """Get all prerequisites for a concept (direct or recursive)."""
     # Verify concept exists
@@ -137,7 +137,7 @@ async def get_concept_prerequisites(
 async def get_concept_dependents(
     concept_id: str,
     recursive: bool = Query(False),
-    service=Depends(get_taxonomy_service),
+    service: TaxonomyService = Depends(get_taxonomy_service),
 ):
     """Get all dependents for a concept (direct or recursive)."""
     result = await service.db.execute(select(Concept).where(Concept.id == concept_id))
@@ -157,7 +157,7 @@ async def get_concept_dependents(
 async def get_reachable_concepts(
     concept_id: str,
     direction: str = Query("downstream", pattern="^(upstream|downstream)$"),
-    service=Depends(get_taxonomy_service),
+    service: TaxonomyService = Depends(get_taxonomy_service),
 ):
     """Get all concepts reachable from a concept in the given direction."""
     result = await service.db.execute(select(Concept).where(Concept.id == concept_id))
@@ -175,7 +175,7 @@ async def get_reachable_concepts(
 
 @router.get("/topological-sort")
 async def get_topological_sort(
-    service=Depends(get_taxonomy_service),
+    service: TaxonomyService = Depends(get_taxonomy_service),
 ):
     """Get concepts in topological order (prerequisites before dependents)."""
     try:

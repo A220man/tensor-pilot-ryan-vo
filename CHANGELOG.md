@@ -1,8 +1,21 @@
 # Changelog
 
-## 1.1.0 — work-in-progress checkpoint
+## 1.2.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
+
+## 1.1.0 — work-in-progress checkpoint
+
+### Fixed
+- FastAPI route type annotations in `backend/app/api/routes/prerequisites.py` (4 endpoints: get_concept_prerequisites, get_concept_dependents, get_reachable_concepts, get_topological_sort)
+
+### Completed
+- Taxonomy data model feature (`taxonomy-data-model`): SQLite models (Concept, Prerequisite, Subject, Domain), JSONL import/export, prerequisite graph algorithms (topological sort, reachable nodes), API endpoints for all entities
+
+### Updated
+- `feature-plan.json`: marked `taxonomy-data-model` as done with implementation paths and tests
+- `PLAN.md`: updated current round and feature statuses
+- `STATUS.md`: checkpoint summary with completed work and next priorities
 
 ## 1.0.0 — work-in-progress checkpoint
 

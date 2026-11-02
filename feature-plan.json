@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "current_feature": "project-skeleton",
+  "current_feature": "taxonomy-data-model",
   "features": [
     {
       "id": "project-skeleton",
@@ -45,15 +45,28 @@
     {
       "id": "taxonomy-data-model",
       "title": "Taxonomy data model with JSONL storage and prerequisite graph",
-      "status": "in_progress",
+      "status": "done",
       "acceptance": [
         "SQLite models for Concept, Prerequisite, Subject, Domain",
         "JSONL import/export for taxonomy data",
         "Prerequisite graph traversal algorithms (topological sort, reachable nodes)",
         "API endpoints for concepts, prerequisites, subjects, domains"
       ],
-      "implementation": [],
-      "tests": []
+      "implementation": [
+        "backend/app/models/concept.py",
+        "backend/app/models/prerequisite.py",
+        "backend/app/models/__init__.py",
+        "backend/app/services/taxonomy.py",
+        "backend/app/api/routes/concepts.py",
+        "backend/app/api/routes/prerequisites.py",
+        "backend/app/api/routes/subjects.py",
+        "backend/app/api/routes/domains.py",
+        "backend/app/api/routes/validation.py",
+        "backend/app/api/routes/__init__.py"
+      ],
+      "tests": [
+        "backend/tests/test_concepts.py"
+      ]
     },
     {
       "id": "custom-domain-support",

@@ -45,3 +45,10 @@ coverage/
 htmlcov/
 .coverage
 venv/
+dist/
+*.db-wal
+*.db-shm
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite3-wal
+*.sqlite3-shm

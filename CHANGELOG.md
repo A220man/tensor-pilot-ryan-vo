@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.3.0 — work-in-progress checkpoint
+
+Partial code published for continued development. Known issues: STATUS.md.
+
+## 1.2.1 — work-in-progress checkpoint
+
+### Fixed
+- TaxonomyService `import_from_jsonl`: prevent mutation of input objects when converting difficulty/type strings to enums
+- TaxonomyService `validate_graph`: normalize cycles to canonical form for accurate deduplication (avoids counting rotated cycles as distinct)
+
+### Updated
+- `feature-plan.json`: current feature remains `taxonomy-data-model`
+- `PLAN.md`: updated current round status
+- `STATUS.md`: checkpoint summary with completed fixes
+
 ## 1.2.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
@@ -35,3 +50,6 @@ All notable changes to this project will be documented in this file.
 - README with architecture diagram, install/run/test steps
 - portfolio.json with project metadata
 - .env.example with configuration template
+</arg_key>
+<arg_key=i</arg_key>
+<arg_value>Update CHANGELOG.md with taxonomy service fixes

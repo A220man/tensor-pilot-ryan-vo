@@ -82,9 +82,10 @@ class TaxonomyService:
             with jsonlines.open(f"{filepath}_concepts.jsonl", mode="r") as reader:
                 for obj in reader:
                     # Convert difficulty string to enum
-                    if obj.get("difficulty"):
-                        obj["difficulty"] = DifficultyLevel(obj["difficulty"])
-                    concept = Concept(**obj)
+                    concept_data = dict(obj)
+                    if concept_data.get("difficulty"):
+                        concept_data["difficulty"] = DifficultyLevel(concept_data["difficulty"])
+                    concept = Concept(**concept_data)
                     self.db.add(concept)
                     counts["concepts"] += 1
             await self.db.commit()
@@ -95,9 +96,10 @@ class TaxonomyService:
         try:
             with jsonlines.open(f"{filepath}_prerequisites.jsonl", mode="r") as reader:
                 for obj in reader:
-                    if obj.get("type"):
-                        obj["type"] = PrerequisiteType(obj["type"])
-                    prereq = Prerequisite(**obj)
+                    prereq_data = dict(obj)
+                    if prereq_data.get("type"):
+                        prereq_data["type"] = PrerequisiteType(prereq_data["type"])
+                    prereq = Prerequisite(**prereq_data)
                     self.db.add(prereq)
                     counts["prerequisites"] += 1
             await self.db.commit()
@@ -214,6 +216,19 @@ class TaxonomyService:
             _, reverse, _ = await self._build_graph()
             return list(reverse.get(concept_id, set()))
 
+    def _normalize_cycle(self, cycle: List[str]) -> Tuple[str, ...]:
+        """Normalize a cycle to a canonical form for deduplication.
+        
+        Rotates the cycle so that the smallest node ID comes first.
+        """
+        if not cycle:
+            return ()
+        # Find the index of the minimum element
+        min_idx = min(range(len(cycle)), key=lambda i: cycle[i])
+        # Rotate so minimum is first
+        normalized = cycle[min_idx:] + cycle[:min_idx]
+        return tuple(normalized)
+
     async def validate_graph(self) -> Dict:
         """Validate prerequisite graph and return quality metrics."""
         forward, reverse, all_nodes = await self._build_graph()
@@ -222,6 +237,7 @@ class TaxonomyService:
         visited = set()
         rec_stack = set()
         cycles = []
+        seen_cycles = set()
 
         def dfs(node: str, path: List[str]):
             visited.add(node)
@@ -235,7 +251,9 @@ class TaxonomyService:
                     # Found a cycle
                     cycle_start = path.index(neighbor)
                     cycle = path[cycle_start:] + [neighbor]
-                    if cycle not in cycles:
+                    normalized = self._normalize_cycle(cycle)
+                    if normalized not in seen_cycles:
+                        seen_cycles.add(normalized)
                         cycles.append(cycle)
 
             rec_stack.discard(node)
@@ -270,3 +288,6 @@ class TaxonomyService:
 def get_taxonomy_service(db: AsyncSession):
     """Dependency injection for TaxonomyService."""
     return TaxonomyService(db)
+</arg_key>
+<arg_key=i</arg_key>
+<arg_value>Fix mutation of input objects and improve cycle detection with normalization

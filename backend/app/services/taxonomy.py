@@ -4,6 +4,8 @@ import json
 import jsonlines
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
+from fastapi import Depends
+from app.core.database import get_db
 
 from app.models import Concept, Prerequisite, Subject, Domain
 from app.models.concept import DifficultyLevel
@@ -285,9 +287,6 @@ class TaxonomyService:
         }
 
 
-def get_taxonomy_service(db: AsyncSession):
+def get_taxonomy_service(db: AsyncSession = Depends(get_db)):
     """Dependency injection for TaxonomyService."""
     return TaxonomyService(db)
-</arg_key>
-<arg_key=i</arg_key>
-<arg_value>Fix mutation of input objects and improve cycle detection with normalization

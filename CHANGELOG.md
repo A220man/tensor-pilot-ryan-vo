@@ -1,8 +1,27 @@
 # Changelog
 
-## 1.3.0 — work-in-progress checkpoint
+## 1.4.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
+
+## 1.3.0 — work-in-progress checkpoint
+
+### Fixed
+- TaxonomyService syntax error: removed corrupted XML artifacts from end of `backend/app/services/taxonomy.py`
+- TaxonomyService dependency injection: fixed `get_taxonomy_service` to properly depend on `get_db` via `Depends`
+- Added required imports (`fastapi.Depends`, `app.core.database.get_db`) to taxonomy service
+
+### Verified
+- All backend tests pass (6 tests: health endpoint, concept CRUD, filtering)
+- All frontend tests pass (3 tests: App component)
+- Frontend builds successfully (Vite + TypeScript)
+- Taxonomy service algorithms: topological sort (Kahn's), reachable nodes (BFS upstream/downstream), cycle detection (DFS with normalization), graph validation (isolated/leaf/root nodes)
+- JSONL import/export round-trip with data integrity
+
+### Updated
+- `STATUS.md`: checkpoint summary with completed fixes
+- `feature-plan.json`: current feature remains `taxonomy-data-model` (completed)
+- `PLAN.md`: feature status confirmed done
 
 ## 1.2.1 — work-in-progress checkpoint
 

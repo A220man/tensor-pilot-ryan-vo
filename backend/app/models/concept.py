@@ -43,6 +43,8 @@ class Domain(Base):
     description = Column(Text, nullable=True)
     color = Column(String(7), nullable=True)
     subject_id = Column(String(64), ForeignKey("subjects.id"), nullable=False)
+    age_min = Column(Integer, nullable=True)
+    age_max = Column(Integer, nullable=True)
 
     subject = relationship("Subject", back_populates="domains")
     concepts = relationship("Concept", back_populates="domain")
@@ -53,6 +55,8 @@ class Domain(Base):
             "name": self.name,
             "description": self.description,
             "color": self.color,
+            "age_min": self.age_min,
+            "age_max": self.age_max,
             "subject_id": self.subject_id,
         }
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.0 — work-in-progress checkpoint
+
+Partial code published for continued development. Known issues: STATUS.md.
+
 ## 1.4.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
@@ -72,3 +76,8 @@ All notable changes to this project will be documented in this file.
 </arg_key>
 <arg_key=i</arg_key>
 <arg_value>Update CHANGELOG.md with taxonomy service fixes
+## 1.5.0 — work-in-progress checkpoint
+
+- Added age_min/age_max fields to Domain model (custom domain age/difficulty ranges)
+- Updated Domain API to accept age_min/age_max parameters
+- Updated PLAN.md, STATUS.md, and feature-plan.json to reflect in_progress status

@@ -41,7 +41,7 @@ Tests: `backend/tests/test_concepts.py`
 
 ### custom-domain-support — Custom domain support for taxonomy visualization (Issue #24)
 
-Status: planned
+Status: in_progress
 
 Acceptance:
 - Configurable subjects, domains, age/difficulty ranges

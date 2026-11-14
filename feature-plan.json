@@ -71,7 +71,7 @@
     {
       "id": "custom-domain-support",
       "title": "Custom domain support for taxonomy visualization (Issue #24)",
-      "status": "planned",
+      "status": "in_progress",
       "acceptance": [
         "Configurable subjects, domains, age/difficulty ranges",
         "Load custom taxonomy datasets following same schema",

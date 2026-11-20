@@ -41,12 +41,16 @@ Tests: `backend/tests/test_concepts.py`
 
 ### custom-domain-support — Custom domain support for taxonomy visualization (Issue #24)
 
-Status: in_progress
+Status: done
 
 Acceptance:
 - Configurable subjects, domains, age/difficulty ranges
 - Load custom taxonomy datasets following same schema
 - Domain-agnostic visualization components
+
+Implementation: `backend/app/services/taxonomy.py (import_from_jsonl, export_to_jsonl)`, `backend/app/models/concept.py (age_min, age_max, difficulty fields)`, `backend/app/api/routes/domains.py, subjects.py, concepts.py (filter by age/difficulty)`
+
+Tests: `backend/tests/test_custom_domain_import.py (new test for JSONL import with age/difficulty)`
 
 ### learning-progress-tracker — Browser-based child learning progress tracker (Issue #16)
 

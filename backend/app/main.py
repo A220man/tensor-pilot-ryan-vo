@@ -4,8 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
 from app.core.database import init_db, close_db
-from app.models import Concept, Subject, Domain, Prerequisite  # noqa: F401
-from app.api.routes import health, concepts, prerequisites, subjects, domains, validation
+from app.models import Concept, Subject, Domain, Prerequisite, ChildProgress  # noqa: F401
+from app.api.routes import health, concepts, prerequisites, subjects, domains, validation, child_progress
 
 
 @asynccontextmanager
@@ -37,6 +37,7 @@ def create_app() -> FastAPI:
     app.include_router(subjects.router, prefix="/api/v1/subjects", tags=["subjects"])
     app.include_router(domains.router, prefix="/api/v1/domains", tags=["domains"])
     app.include_router(validation.router, prefix="/api/v1/validation", tags=["validation"])
+    app.include_router(child_progress.router, prefix="/api/v1", tags=["child-progress"])
 
     return app
 

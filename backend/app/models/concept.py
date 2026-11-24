@@ -88,6 +88,12 @@ class Concept(Base):
         back_populates="prerequisite",
         cascade="all, delete-orphan",
     )
+    child_progress = relationship(
+        "ChildProgress",
+        back_populates="concept",
+        foreign_keys="ChildProgress.concept_id",
+        cascade="all, delete-orphan",
+    )
 
     def to_dict(self) -> dict:
         return {

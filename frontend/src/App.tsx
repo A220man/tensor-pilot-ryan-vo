@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import ChildProgress from './ChildProgress'
 
 interface HealthResponse {
   status: string
@@ -47,13 +48,14 @@ function App() {
       <div style={styles.status}>
         <strong>Backend Status:</strong> {health?.status} ({health?.service})
       </div>
+      <ChildProgress initialChildId="child-1" />
     </div>
   )
 }
 
 const styles: Record<string, React.CSSProperties> = {
   container: {
-    maxWidth: '800px',
+    maxWidth: '1200px',
     margin: '0 auto',
     padding: '2rem',
     fontFamily: 'system-ui, sans-serif',

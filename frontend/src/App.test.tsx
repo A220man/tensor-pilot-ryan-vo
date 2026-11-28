@@ -23,7 +23,9 @@ describe('App', () => {
     render(<App />)
 
     await waitFor(() => {
-      expect(screen.getByText('Backend Status:')).toBeInTheDocument()
+      // "Backend Status:" could be inside the status div or the ChildProgress component
+      const element = screen.getByText(/Backend Status:/i)
+      expect(element).toBeInTheDocument()
       expect(screen.getByText('healthy (tensor-pilot-ryan-vo)')).toBeInTheDocument()
     })
   })
